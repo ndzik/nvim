@@ -1,0 +1,499 @@
+""set runtimepath^=~/.vim runtimepath+=~/.vim/after
+""let &packpath = &runtimepath
+""source ~/.vimrc
+
+""""""""""""""""""
+""" ZeuS-Vimrc """
+""""""""""""""""""
+
+"""""""""""""""
+""" PLUGINS """
+"""""""""""""""
+
+""" Specify directory for plugins """
+call plug#begin()
+"Vim-Source-Code-Browser
+Plug 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
+"Surround-Plugin
+Plug 'tpope/vim-surround'
+"Nerdtree
+Plug 'scrooloose/nerdtree'
+"Instant markdown-preview
+Plug 'suan/vim-instant-markdown'
+"vim-tmux-seemless navigation
+Plug 'christoomey/vim-tmux-navigator'
+"Vim interact with tmux itself
+Plug 'benmills/vimux'
+"Vimwiki
+Plug 'vimwiki/vimwiki'
+"Solidity highlighting
+Plug 'tomlion/vim-solidity'
+"C++ colorhighlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
+"autoread compatibility on commandline
+Plug 'tmux-plugins/vim-tmux-focus-events'
+"Colors
+Plug 'flazz/vim-colorschemes'
+Plug 'romainl/flattened'
+Plug 'morhetz/gruvbox'
+"Highlight trailing whitespaces
+Plug 'ntpeters/vim-better-whitespace'
+"gui color-scheme
+Plug 'vim-scripts/guicolorscheme.vim'
+"vim session manager
+Plug 'vim-scripts/sessionman.vim'
+"Vim-Live-Latex-Preview
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+"Typescript
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'jparise/vim-graphql'
+"Rust
+Plug 'rust-lang/rust.vim'
+
+"Haskell
+"Plug 'neovimhaskell/nvim-hs.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['haskell', 'js', 'ts', 'tsx', 'jsx', 'javascript', 'typescript.tsx', 'typescriptreact']}
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': './install.sh'
+  \ }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'monkoose/fzf-hoogle.vim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+
+"Vim-Fugitive for git commands inside vim
+Plug 'tpope/vim-fugitive'
+"Sign-column markings for git revisioning
+Plug 'airblade/vim-gitgutter'
+"Vim-Arduino
+Plug 'stevearc/vim-arduino'
+"Vim-instant-markdown viewer
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+"vim-multiple-cursor
+Plug 'mg979/vim-visual-multi'
+"telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+"Vim-Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"cmdline inside vim-buffer
+Plug 'shougo/vimshell.vim'
+Plug 'shougo/vimproc.vim'
+Plug 'sebdah/vim-delve'
+"vim-airline-status bar
+Plug 'vim-airline/vim-airline'
+""vim-airline-themes
+Plug 'vim-airline/vim-airline-themes'
+"vim-devicons
+Plug 'ryanoasis/vim-devicons'
+"After this plugins become visible to vim
+call plug#end()
+
+"""""""""""""""
+""" KEYMAPS """
+"""""""""""""""
+nnoremap <Space> <Nop>
+let mapleader = " "
+tnoremap <Esc> <C-\><C-n>
+
+""" Codecompletion """
+inoremap <C-Space> <C-x><C-o>
+
+""" VIMUX-Interaction """
+" Close vim tmux runner opened by VimuxRunCommand
+nnoremap <leader>vq :VimuxCloseRunner<CR>
+" Inspect runner pane map
+nnoremap <leader>vi :VimuxInspectRunner<CR>
+" Prompt for a command to run map
+nnoremap <leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+nnoremap <leader>vl :VimuxRunLastCommand<CR>
+
+nnoremap <leader>ev :tabe ~/.vimrc<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
+nnoremap <leader>cv :Vimwiki2HTML<CR>
+nnoremap <leader>cav :VimwikiAll2HTML<CR>
+
+""" Call NERDTree """
+nnoremap <leader>nt :NERDTreeToggle<enter>
+nnoremap <leader>nf :NERDTreeFocus<enter>
+
+"""""""""""""""""
+""" TELESCOPE """
+"""""""""""""""""
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+""""""""""""
+""" TMUX """
+""""""""""""
+
+nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
+""" tmux-vim-navigation """
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+""" Save buffer if changed when switching panes """
+let g:tmux_navigator_save_on_switch = 1
+
+"""""""""""""""""""""
+""" MISCELLANEOUS """
+"""""""""""""""""""""
+
+""" CPP-Highlighting """
+" Highlight of class names in declarations
+let g:cpp_class_decl_highlight = 1
+" Highlighting of member variables
+let g:cpp_member_variable_highlight = 1
+" Highlighting of class scope
+let g:cpp_class_scope_highlight = 1
+
+""" Colors """
+set background=dark
+
+""" HIGHLIGHTING """
+
+""" Syntax highlighting && Code hints """
+syntax on
+"highlight ColorColumn ctermbg=236
+""let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="80"
+set cursorline
+hi CursorLine cterm=NONE ctermbg=236
+hi Folded ctermfg=2 ctermbg=233
+
+""" Pmenu
+hi Pmenu ctermbg=233 ctermfg=228
+
+""" SIGNCOLUMN
+hi SignColumn ctermbg=0
+
+""" SPECIAL CHARS
+"hi SpecialKey ctermfg=200
+
+""" TABLINE
+hi TabLineFill term=bold cterm=bold ctermfg=1 ctermbg=0
+hi TabLineSel term=bold cterm=bold
+
+hi Search cterm=bold ctermbg=none ctermfg=220
+hi MatchParen term=bold cterm=bold ctermbg=none ctermfg=39
+
+hi Conceal ctermbg=235
+
+hi SpellBad cterm=bold ctermfg=235 ctermbg=167
+hi SpellRare cterm=bold ctermfg=70 ctermbg=0
+
+hi link ALEError Error
+hi Warning term=underline cterm=underline ctermfg=Yellow
+hi link ALEWarning Warning
+hi link ALEInfo SpellCap
+
+"hi VertSplit ctermbg=NONE ctermfg=NONE
+"set fillchars+=vert:\|
+"hi VertSplit ctermbg=1 ctermfg=45
+
+""" Allow for smartcase search """
+set ignorecase
+set smartcase
+""" Set ScrollOffset to 10 """
+set so=10
+""" recognize filetype by checking syntax/fileext """
+filetype plugin indent on
+
+""" Set shellslash so latex can be called correctly """
+set shellslash
+
+set nocompatible
+set autoread
+
+""" Set tabstop to 2 spaces instead of regular tab """
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+""" Set standard encoding to utf-8 """
+set encoding=utf-8
+
+""" Comfort for editing in single window """
+set hidden
+
+""" Set filetype for .wiki to markdown """
+autocmd BufRead,BufNewFile *.wiki setlocal filetype=markdown
+au BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino
+
+""" Better cmdline completion """
+set wildmenu
+
+""" Show partial cmds in last line of screen """
+set showcmd
+
+""" Find file in subdirectory """
+set path=**
+
+""" Highlight searches """
+set hlsearch
+
+""" Dialogue to confirm """
+set confirm
+
+""" Visual bell """
+set visualbell
+set t_vb=
+
+""" Cmd window height """
+set cmdheight=2
+
+""" Line of numbers on left side """
+set number
+set relativenumber
+
+let g:instant_markdown_autostart = 0
+
+""" Set backspace """
+set backspace=2
+
+""""""""""""""""""""""""""""""""""
+""" Split windows with | and - """
+""""""""""""""""""""""""""""""""""
+map <Bar> 	<C-W>v<C-W><Right>
+map -		<C-W>s<C-W><Down>
+
+"""""""""""""""""""""""""""""""""""""""""""
+""" quick closing and saving of windows """
+"""""""""""""""""""""""""""""""""""""""""""
+
+""" quick-close """
+map <C-c>	<C-W>c
+
+""""""""""""""""
+""" folding  """
+""""""""""""""""
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
+""""""""""""""""""""""""
+""" CUSTOM FUNCTIONS """
+""""""""""""""""""""""""
+
+"Use vim as a hexeditor 'vim -b'
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
+"""""""""""""""""""""""
+""" CUSTOM COMMANDS """
+"""""""""""""""""""""""
+command! Tohex :%!xxd
+command! Tobin :%!xxd -r
+command! Unittest :call UnittestFunction()
+nnoremap <leader>ut  :Unittest<CR>
+command! Ctags :!ctags -R .
+command! -nargs=1 Del call DeleteRelAt(<q-args>)
+
+function! UnittestFunction()
+  let name = expand("%:t:r")
+  if name !~ "test"
+    let name = name . "test"
+  endif
+  execute VimuxRunCommand("ninja " . name . " && bintest/" . name)
+endfunction
+
+function! DeleteRelAt(ln)
+  let [z, lnum, col, off, curswant] = getcurpos()
+  let targetln = lnum + a:ln
+  execute targetln . "delete"
+  if a:ln < 0
+    let lnum = lnum - 1
+  endif
+  call setpos('.', [z, lnum, col, off, curswant])
+endfunction
+
+"""""""""""""""
+""" VIMWIKI """
+"""""""""""""""
+
+""" VimwikiLinkHandler(link) redefinition """
+function! VimwikiLinkHandler(link)
+  " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
+  "   1) [[vfile:~/Code/PythonProject/abc123.py]]
+  "   2) [[vfile:./|Wiki Home]]
+  let link = a:link
+  if link =~# '^vfile:'
+    let link = link[1:]
+  else
+    return 0
+  endif
+  let link_infos = vimwiki#base#resolve_link(link)
+  if link_infos.filename == ''
+    echomsg 'Vimwiki Error: Unable to resolve link!'
+    return 0
+  else
+    exe 'edit ' . fnameescape(link_infos.filename)
+    return 1
+  endif
+endfunction
+
+"""""""""""""""""""
+""" Vim Airline """
+"""""""""""""""""""
+
+""" Make vim-airline compatible with vimdevicons """
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme='wombat'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = ''
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.spell = '暈'
+let g:airline_symbols.notexists = ''
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ':'
+let g:airline_symbols.maxlinenr = ''
+
+""""""""""""""""""""""""
+""" Code Integration """
+""""""""""""""""""""""""
+
+set nocp
+
+let g:C_UseTool_cmake = 'yes'
+
+"""""""""""""""
+""" HASKELL """
+"""""""""""""""
+let g:hoogle_open_link = "firefox -P search"
+
+"""""""""""""
+""" GOVIM """
+"""""""""""""
+set updatetime=500
+let g:go_diagnostics_level = 2 "" errors + warnings
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+autocmd FileType go let b:go_fmt_options = {
+      \ 'gofmt': '-s',
+      \ 'goimports': '-local ' .
+      \ trim(system('cd '. shellescape(expand('%:h')) .' && go list -m;')),
+      \ }
+let g:go_imports_autosave = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+"" everything be quickfix window
+"let g:go_list_type = "quickfix"
+"" let vim write content of file if :make is called (internally by vim-go-cmds)
+set autowrite
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>t :TagbarToggle<CR>
+let g:go_imports_autosave = 1
+let g:go_auto_type_info = 1
+set updatetime=100
+let g:go_auto_sameids = 0
+
+"" highlighting
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+let g:go_debug_breakpoint_sign_text = ''
+let g:go_debug_windows = {
+      \ 'vars':       'rightbelow 60vnew',
+      \ 'stack':      'rightbelow 10new',
+\ }
+
+"""""""""""
+""" LLP """
+"""""""""""
+let g:livepreview_previewer = 'zathura'
+
+"""""""""""
+""" GUI """
+"""""""""""
+
+""""" TABLINE """
+""function SimpleTabLine()
+""  let s = ''
+""  for i in range(tabpagenr('$'))
+""    " select the highlighting
+""    if i + 1 == tabpagenr()
+""      let s .= '%#TabLineSel#'
+""    else
+""      let s .= '%#TabLine#'
+""    endif
+""
+""    " set the tab page number (for mouse clicks)
+""    let s .= '%' . (i + 1) . 'T'
+""
+""    " the label is made by MyTabLabel()
+""    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+""  endfor
+""
+""  " after the last tab fill with TabLineFill and reset tab page nr
+""  let s .= '%#TabLineFill#%T'
+""
+""  return s
+""endfunction
+""
+""function MyTabLabel(n)
+""  let buflist = tabpagebuflist(a:n)
+""  let winnr = tabpagewinnr(a:n)
+""  return bufname(buflist[winnr - 1])
+""endfunction
+""
+""set tabline=%!SimpleTabLine()
+""
+""function! ArduinoStatusLine()
+""  let port = arduino#GetPort()
+""  let line = '[' . g:arduino_board . '] [' . g:arduino_programmer . ']'
+""  if !empty(port)
+""    let line = line . ' (' . port . ':' . g:arduino_serial_baud . ')'
+""  endif
+""  return line
+""endfunction
+""
+""function! GitStatus()
+""  let [a,m,r] = GitGutterGetHunkSummary()
+""  return printf('[ %d] [ %d] [ %d]', a, m, r)
+""endfunction
+""set statusline+=%{GitStatus()}
+"""" For use with vim-airline
+""autocmd BufNewFile,BufRead *.ino let g:airline_section_x='%{ArduinoStatusLine()}'

@@ -25,6 +25,10 @@ utils.opt('o', "confirm", true)
 utils.opt('o', "cmdheight", 2)
 utils.opt('o', "clipboard", "unnamed,unnamedplus")
 
+-- Options for completion behaviour.
+utils.opt('o', "completeopt", "menu,menuone,noinsert,noselect")
+utils.opt('o', "shortmess", "at")
+
 -- Options for folding behaviour.
 utils.opt('w', "foldmethod", "syntax")
 utils.opt('w', "foldnestmax", 10)

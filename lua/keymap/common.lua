@@ -3,8 +3,15 @@ local utils = require("utils")
 utils.map('n', '<Space>', '<Nop>')
 utils.map('t', '<Esc>', '<C-\\><C-n>')
 
+-- Easily move through quickfix and locallist.
+utils.map('n', '<C-j>', '<cmd>lnext<cr>')
+utils.map('n', '<C-k>', '<cmd>lprev<cr>')
+utils.map('n', '<C-l>', '<cmd>cnext<cr>')
+utils.map('n', '<C-h>', '<cmd>cprev<cr>')
+
+
 -- Code completion.
-utils.map('i', '<C-Space>', '<C-x><C-o>')
+utils.map('i', '<C-Space>', '<C-x><C-o>', { silent = true })
 
 -- Vimux integration.
 utils.map('n', '<leader>vq', '<cmd>VimuxCloseRunner<CR>')
@@ -18,10 +25,10 @@ utils.map('n', '<leader>nf', '<cmd>NERDTreeFocus<enter>')
 
 -- Tmux integration.
 local opts = { silent = true }
-utils.map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>', opts)
-utils.map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>', opts)
-utils.map('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>', opts)
-utils.map('n', '<C-l>', '<cmd>TmuxNavigateRight<cr>', opts)
+utils.map('n', '<C-w><C-h>', '<cmd>TmuxNavigateLeft<cr>', opts)
+utils.map('n', '<C-w><C-j>', '<cmd>TmuxNavigateDown<cr>', opts)
+utils.map('n', '<C-w><C-k>', '<cmd>TmuxNavigateUp<cr>', opts)
+utils.map('n', '<C-w><C-l>', '<cmd>TmuxNavigateRight<cr>', opts)
 
 -- Vimux global options.
 vim.api.nvim_set_var("tmux_navigator_no_mappings", 1)

@@ -1,11 +1,10 @@
 local cmd = vim.cmd
 
-function use(plugin)
+local function use(plugin)
     cmd("Plug " .. plugin)
 end
 
 use([['benmills/vimux']])
-use([['sebdah/vim-delve']])
 use([['tpope/vim-surround']])
 use([['shougo/vimproc.vim']])
 use([['scrooloose/nerdtree']])
@@ -13,13 +12,14 @@ use([['shougo/vimshell.vim']])
 use([['ryanoasis/vim-devicons']])
 use([['mg979/vim-visual-multi']])
 use([['vim-scripts/taglist.vim']])
-use([['suan/vim-instant-markdown']])
 use([['vim-scripts/sessionman.vim']])
 use([['christoomey/vim-tmux-navigator']])
 use([['ntpeters/vim-better-whitespace']])
 use([['tmux-plugins/vim-tmux-focus-events']])
-use([['suan/vim-instant-markdown', {'for': 'markdown'}]])
-use([['xuhdev/vim-latex-live-preview', { 'for': 'tex' }]])
+
+-- Plugins related to LSP support.
+use([['neovim/nvim-lspconfig']])
+use([['nvim-lua/completion-nvim']])
 
 -- Plugins for the statusbar.
 use([['vim-airline/vim-airline']])
@@ -42,6 +42,9 @@ use([['peitalin/vim-jsx-typescript']])
 -- Plugins for Rust.
 use([['rust-lang/rust.vim']])
 
+-- Plugins for Go.
+use([['sebdah/vim-delve']])
+
 -- Plugins for Git-related stuff.
 use([['tpope/vim-fugitive']])
 use([['airblade/vim-gitgutter']])
@@ -52,5 +55,6 @@ use([['nvim-lua/plenary.nvim']])
 use([['nvim-telescope/telescope.nvim']])
 use([['nvim-telescope/telescope-fzy-native.nvim']])
 
--- Plugins for Go.
-use([['fatih/vim-go', { 'do': ':GoUpdateBinaries' }]])
+-- Plugins for Treesitter.
+use([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
+use([['nvim-treesitter/playground']])

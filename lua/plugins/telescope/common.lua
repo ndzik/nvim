@@ -1,14 +1,4 @@
 local actions = require("telescope.actions")
-local utils = require("utils")
-
--- Telescope bindings.
-utils.map('n', '<leader>ff', '<cmd>Telescope find_files<CR>')
-utils.map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-utils.map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-utils.map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
-utils.map('n', '<leader>gc', '<cmd>Telescope git_commits<cr>')
-utils.map('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
-utils.map('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
 
 -- Telescope configuration. Here one can override several defaults and register
 -- custom keybinds, which are local to the telescope window.
@@ -40,10 +30,20 @@ require('telescope').setup {
 require('telescope').load_extension("fzy_native")
 
 local M = {}
-M.search_dotfiles = function()
+
+-- set_ignorepattern receives a regex string, which will be used to ignore
+-- patterns for `Telescope.find_files()`.
+M.set_ignore_pattern = function(pattern)
+    M.ignorePattern = { pattern }
+end
+
+-- search_dotfiles allows you to configure your neovim configuration by fuzzing
+-- over your configuration folder.
+M.search_dotfiles = function(configPath)
     require("telescope.builtin").find_files({
         prompt_title = "< VimRC >",
-        cwd = "$HOME/.config/nvim",
+        cwd = configPath,
+        file_ignore_patterns = { "plugged/.*" }
     })
 end
 
@@ -54,6 +54,12 @@ M.git_branches = function()
             map('n', '<c-d>', actions.git_delete_branch)
             return true
         end
+    })
+end
+
+M.find_files = function()
+    require("telescope.builtin").find_files({
+        file_ignore_patterns = M.ignorePattern
     })
 end
 

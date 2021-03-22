@@ -23,7 +23,15 @@ function common.DefaultKeymap()
     utils.mapbuf('n', '<leader>cR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     utils.mapbuf('n', '<leader>cs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     utils.mapbuf('n', '<leader>cg', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
-    utils.mapbuf('i', '<c-space>', '<cmd>lua vim.lsp.buf.completion()<CR>', opts)
+
+    -- NOTE: Following binding:
+    --
+    -- `utils.mapbuf('i', '<c-space>', '<cmd>lua vim.lsp.buf.completion()<CR>')`
+    --
+    -- will not work as expected. Although the completion menu will popup,
+    -- selecting a suggestion from the completion list will remove the content
+    -- of the current line. I do not know why this is the case, but maybe this
+    -- comment will someday trigger me, or someone else, to seek the truth.
 end
 
 return common

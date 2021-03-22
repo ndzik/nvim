@@ -38,6 +38,10 @@ use([['jparise/vim-graphql']])
 use([['pangloss/vim-javascript']])
 use([['leafgarland/typescript-vim']])
 use([['peitalin/vim-jsx-typescript']])
+-- TODO: Periodically check whether or not a better language server
+-- implementation for JS/TS is available, which already integrates with a
+-- formatting provider.
+use([['mhartington/formatter.nvim']])
 
 -- Plugins for Rust.
 use([['rust-lang/rust.vim']])

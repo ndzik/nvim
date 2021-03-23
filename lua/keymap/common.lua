@@ -9,10 +9,6 @@ utils.map('n', '<C-k>', '<cmd>lprev<cr>')
 utils.map('n', '<C-l>', '<cmd>cnext<cr>')
 utils.map('n', '<C-h>', '<cmd>cprev<cr>')
 
-
--- Code completion.
-utils.map('i', '<C-Space>', '<C-x><C-o>', { silent = true })
-
 -- Vimux integration.
 utils.map('n', '<leader>vq', '<cmd>VimuxCloseRunner<CR>')
 utils.map('n', '<leader>vi', '<cmd>VimuxInspectRunner<CR>')

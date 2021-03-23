@@ -28,10 +28,8 @@ use([['vim-airline/vim-airline-themes']])
 -- Plugins for Haskell.
 -- TODO: Get rid of this hoogle implementation and write a `Telescope` plugin
 -- instead.
-use([['junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}]])
-use([['monkoose/fzf-hoogle.vim']])
 use([['neovimhaskell/haskell-vim']])
-use([['ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }]])
+use([['luc-tielen/telescope_hoogle']])
 
 -- Plugins for Typescript.
 use([['jparise/vim-graphql']])

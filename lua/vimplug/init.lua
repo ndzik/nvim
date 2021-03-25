@@ -26,9 +26,6 @@ use([['vim-airline/vim-airline']])
 use([['vim-airline/vim-airline-themes']])
 
 -- Plugins for Haskell.
--- TODO: Get rid of this hoogle implementation and write a `Telescope` plugin
--- instead.
-use([['neovimhaskell/haskell-vim']])
 use([['luc-tielen/telescope_hoogle']])
 
 -- Plugins for Typescript.

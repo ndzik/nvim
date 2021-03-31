@@ -7,10 +7,10 @@ local indent = 4
 -- Options for editor behaviour.
 cmd "filetype plugin indent on"
 
-utils.opt('b', "expandtab", true)
-utils.opt('b', "shiftwidth", indent)
-utils.opt('b', "smartindent", true)
 utils.opt('b', "tabstop", indent)
+utils.opt('b', "shiftwidth", indent)
+utils.opt('b', "expandtab", true)
+utils.opt('b', "smartindent", true)
 utils.opt('o', "hidden", true)
 utils.opt('o', "ignorecase", true)
 utils.opt('o', "smartcase", true)

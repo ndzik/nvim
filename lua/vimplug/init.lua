@@ -26,7 +26,7 @@ use([['vim-airline/vim-airline']])
 use([['vim-airline/vim-airline-themes']])
 
 -- Plugins for Haskell.
-use([['luc-tielen/telescope_hoogle']])
+use([['ndzik/telescope_hoogle', { 'branch': 'add_browser_config' }]])
 
 -- Plugins for Typescript.
 use([['jparise/vim-graphql']])
@@ -46,7 +46,6 @@ use([['sebdah/vim-delve']])
 
 -- Plugins for Git-related stuff.
 use([['tpope/vim-fugitive']])
-use([['airblade/vim-gitgutter']])
 
 -- Plugins for Telescope.
 use([['nvim-lua/popup.nvim']])

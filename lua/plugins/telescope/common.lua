@@ -23,7 +23,11 @@ require('telescope').setup {
         fzy_native = {
             override_generic_sorter = false,
             override_file_sorter = true,
-        }
+        },
+
+        hoogle = {
+            browser_cmd = "firefox -P search",
+        },
     }
 }
 

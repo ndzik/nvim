@@ -5,6 +5,7 @@ utils.map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 utils.map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 utils.map('n', '<leader>gc', '<cmd>Telescope git_commits<cr>')
 utils.map('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
+utils.map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 
 utils.map('n', '<leader>ho', '<cmd>Telescope hoogle<cr>')
 
@@ -12,6 +13,14 @@ utils.map('n', '<leader>ho', '<cmd>Telescope hoogle<cr>')
 -- properly installed on the system, otherwise this command will always fail
 -- with a cryptic error message.
 utils.map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grepping > ") })<cr>')
+
+-- Give each manpage section a keybind `<leader>m<section_number>`.
+-- TODO: Add some kind of hint reminding me to update `mandb`.
+for _, v in pairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
+    local map = string.format('<leader>m%s', v)
+    local cmd = string.format('<cmd>lua require("telescope.builtin").man_pages({ sections = { "%s" } })<cr>', v)
+    utils.map('n', map, cmd)
+end
 
 -- Keymapping for custom telescope functions.
 utils.map('n', '<leader>gb', '<cmd>lua require("plugins.telescope.common").git_branches()<cr>')

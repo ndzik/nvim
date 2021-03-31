@@ -21,10 +21,6 @@ use([['tmux-plugins/vim-tmux-focus-events']])
 use([['neovim/nvim-lspconfig']])
 use([['nvim-lua/completion-nvim']])
 
--- Plugins for the statusbar.
-use([['vim-airline/vim-airline']])
-use([['vim-airline/vim-airline-themes']])
-
 -- Plugins for Haskell.
 use([['ndzik/telescope_hoogle', { 'branch': 'add_browser_config' }]])
 

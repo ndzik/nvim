@@ -17,6 +17,11 @@ use([['christoomey/vim-tmux-navigator']])
 use([['ntpeters/vim-better-whitespace']])
 use([['tmux-plugins/vim-tmux-focus-events']])
 
+-- Plugins for colorschemes.
+use([['nikolvs/vim-sunbather']])
+use([['lokaltog/vim-monotone']])
+use([['andreasvc/vim-256noir']])
+
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
 use([['nvim-lua/completion-nvim']])

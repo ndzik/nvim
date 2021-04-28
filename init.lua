@@ -4,9 +4,6 @@ local fn = vim.fn
 local execute = vim.api.nvim_command
 local call = vim.call
 
-require("settings")
-require("keymap")
-
 local install_path = fn.stdpath("data").."/site/autoload/plug.vim"
 if fn.empty(fn.glob(install_path)) > 0 then
 	execute([[
@@ -22,3 +19,7 @@ call("plug#end")
 
 -- Load various plugin configurations made in lua.
 require("plugins")
+
+-- Load custom configuration for keymaps and miscellaneous stuff.
+require("settings")
+require("keymap")

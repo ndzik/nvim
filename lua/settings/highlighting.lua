@@ -9,6 +9,8 @@ utils.opt('o', "background", "dark")
 utils.opt('w', "cursorline", true)
 utils.opt('w', "colorcolumn", "80")
 
+cmd "colorscheme monotone"
+
 cmd "syntax enable"
 cmd "hi CursorLine cterm=NONE ctermbg=236"
 cmd "hi Folded ctermfg=2 ctermbg=233"
@@ -23,7 +25,4 @@ cmd "hi Conceal ctermbg=235"
 cmd "hi SpellBad cterm=bold ctermfg=235 ctermbg=167"
 cmd "hi SpellRare cterm=bold ctermfg=70 ctermbg=0"
 cmd "hi Warning term=underline cterm=underline ctermfg=Yellow"
-cmd "hi link ALEError Error"
-cmd "hi link ALEWarning Warning"
-cmd "hi link ALEInfo SpellCap"
 cmd "au TextYankPost * lua vim.highlight.on_yank {on_visual = false}"

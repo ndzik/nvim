@@ -1,5 +1,6 @@
 require("plugins.lsp.common")
+require("plugins.lsp.haskell")
+require("plugins.lsp.cpp")
 require("plugins.lsp.lua")
 require("plugins.lsp.go")
-require("plugins.lsp.haskell")
 require("plugins.lsp.ts")

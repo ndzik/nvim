@@ -29,6 +29,9 @@ use([['nvim-lua/completion-nvim']])
 -- Plugins for Haskell.
 use([['ndzik/telescope_hoogle', { 'branch': 'add_browser_config' }]])
 
+-- PLugins for Purescript.
+use([['purescript-contrib/purescript-vim']])
+
 -- Plugins for Typescript.
 use([['jparise/vim-graphql']])
 use([['pangloss/vim-javascript']])

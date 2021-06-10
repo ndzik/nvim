@@ -9,5 +9,6 @@ local custom_lsp_attach = function(client)
 end
 
 require("lspconfig").ccls.setup({
-    on_attach = custom_lsp_attach
+    on_attach = custom_lsp_attach;
+    filetypes = {"c", "cpp", "objc", "objcpp", "cuda"};
 })

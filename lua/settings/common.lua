@@ -2,7 +2,7 @@
 local utils = require("utils")
 
 local cmd = vim.cmd
-local indent = 4
+local indent = 2
 
 -- Options for editor behaviour.
 cmd "filetype plugin indent on"

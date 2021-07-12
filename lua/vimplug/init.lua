@@ -22,6 +22,9 @@ use([['nikolvs/vim-sunbather']])
 use([['lokaltog/vim-monotone']])
 use([['andreasvc/vim-256noir']])
 
+-- Plugins related to DSP support.
+use([['puremourning/vimspector']])
+
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
 use([['nvim-lua/completion-nvim']])

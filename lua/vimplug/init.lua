@@ -21,6 +21,7 @@ use([['tmux-plugins/vim-tmux-focus-events']])
 use([['nikolvs/vim-sunbather']])
 use([['lokaltog/vim-monotone']])
 use([['andreasvc/vim-256noir']])
+use([['jaredgorski/fogbell.vim']])
 
 -- Plugins related to DSP support.
 use([['puremourning/vimspector']])
@@ -30,7 +31,8 @@ use([['neovim/nvim-lspconfig']])
 use([['nvim-lua/completion-nvim']])
 
 -- Plugins for Haskell.
-use([['ndzik/telescope_hoogle', { 'branch': 'add_browser_config' }]])
+use([['junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}]])
+use([['monkoose/fzf-hoogle.vim']])
 
 -- PLugins for Purescript.
 use([['purescript-contrib/purescript-vim']])

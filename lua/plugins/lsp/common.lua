@@ -25,6 +25,7 @@ function common.DefaultKeymap()
     utils.mapbuf('n', '<leader>cg', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
 
     utils.mapbuf('i', '<c-space>', '<Plug>(completion_trigger)', { noremap = false, silent = true })
+    utils.mapbuf('n', '<leader>di', '<cmd>lua vim.lsp.diagnostics.set_loclist()<CR>', { silent = true })
 end
 
 return common

@@ -7,7 +7,6 @@ utils.map('n', '<leader>gc', '<cmd>Telescope git_commits<cr>')
 utils.map('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
 utils.map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 
-utils.map('n', '<leader>ho', '<cmd>Telescope hoogle<cr>')
 utils.map('n', '<leader>er', '<cmd>Telescope lsp_workspace_diagnostics<cr>')
 utils.map('n', '<leader>im', '<cmd>Telescope lsp_implementations<cr>')
 

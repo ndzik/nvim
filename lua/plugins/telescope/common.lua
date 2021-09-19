@@ -24,15 +24,10 @@ require('telescope').setup {
             override_generic_sorter = false,
             override_file_sorter = true,
         },
-
-        hoogle = {
-            browser_cmd = "firefox -P search",
-        },
     }
 }
 
 require('telescope').load_extension("fzy_native")
-require('telescope').load_extension("hoogle")
 require('telescope').load_extension("git_worktree")
 
 local M = {}

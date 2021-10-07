@@ -28,7 +28,6 @@ use([['puremourning/vimspector']])
 
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
-use([['nvim-lua/completion-nvim']])
 
 -- Plugins for Haskell.
 use([['junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}]])

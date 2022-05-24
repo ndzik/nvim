@@ -62,6 +62,7 @@ use([['nvim-lua/popup.nvim']])
 use([['nvim-lua/plenary.nvim']])
 use([['nvim-telescope/telescope.nvim']])
 use([['nvim-telescope/telescope-fzy-native.nvim']])
+use([['nvim-telescope/telescope-file-browser.nvim']])
 
 -- Plugins for Treesitter.
 use([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])

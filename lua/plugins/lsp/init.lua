@@ -1,6 +1,7 @@
 require("plugins.lsp.common")
 require("plugins.lsp.rust")
 require("plugins.lsp.haskell")
+-- require("plugins.lsp.plutus")
 require("plugins.lsp.cpp")
 require("plugins.lsp.lua")
 require("plugins.lsp.latex")

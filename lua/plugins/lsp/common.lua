@@ -25,6 +25,8 @@ function common.DefaultKeymap()
     utils.mapbuf('i', '<c-space>', '<c-x><c-o>', opts)
 
     utils.mapbuf('n', '<leader>di', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', { silent = true })
+    utils.mapbuf('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true })
+    utils.mapbuf('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true })
 end
 
 return common

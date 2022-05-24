@@ -32,6 +32,7 @@ use([['neovim/nvim-lspconfig']])
 -- Plugins for Haskell.
 use([['junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}]])
 use([['monkoose/fzf-hoogle.vim']])
+use([['neovimhaskell/haskell-vim']])
 
 -- PLugins for Purescript.
 use([['purescript-contrib/purescript-vim']])
@@ -65,3 +66,7 @@ use([['nvim-telescope/telescope-fzy-native.nvim']])
 -- Plugins for Treesitter.
 use([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
 use([['nvim-treesitter/playground']])
+
+-- Plugins for formatting.
+use([['tpope/vim-sleuth']])
+use([['dhruvasagar/vim-table-mode']])

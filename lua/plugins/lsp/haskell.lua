@@ -13,7 +13,6 @@ end
 require("lspconfig").hls.setup({
     settings = {
         languageServerHaskell = {
-          formattingProvider = "brittany",
           hlintOn = true,
         },
     },

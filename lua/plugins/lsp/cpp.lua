@@ -1,4 +1,5 @@
 local common = require("plugins.lsp.common")
+local capabilities = require("plugins.completion")
 
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
@@ -9,4 +10,5 @@ end
 require("lspconfig").ccls.setup({
     on_attach = custom_lsp_attach,
     filetypes = {"c", "cpp", "objc", "objcpp", "cuda"},
+    capabilities = capabilities,
 })

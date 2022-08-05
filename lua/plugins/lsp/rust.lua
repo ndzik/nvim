@@ -1,4 +1,5 @@
 local common = require("plugins.lsp.common")
+local capabilities = require("plugins.completion")
 
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
@@ -7,5 +8,6 @@ local custom_lsp_attach = function(client)
 end
 
 require('lspconfig').rust_analyzer.setup({
-  on_attach = custom_lsp_attach,
+    on_attach = custom_lsp_attach,
+    capabilities = capabilities,
 })

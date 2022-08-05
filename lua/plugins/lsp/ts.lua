@@ -1,4 +1,5 @@
 local common = require("plugins.lsp.common")
+local capabilities = require("plugins.completion")
 
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
@@ -30,4 +31,5 @@ require("formatter").setup({
         typescript = { prettier_callback },
         json = { prettier_callback },
     },
+    capabilities = capabilities,
 })

@@ -29,6 +29,13 @@ use([['puremourning/vimspector']])
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
 
+-- Plugins for completion
+use([['hrsh7th/cmp-nvim-lsp']])
+use([['hrsh7th/cmp-buffer']])
+use([['hrsh7th/cmp-path']])
+use([['hrsh7th/cmp-cmdline']])
+use([['hrsh7th/nvim-cmp']])
+
 -- Plugins for Haskell.
 use([['junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}]])
 use([['monkoose/fzf-hoogle.vim']])

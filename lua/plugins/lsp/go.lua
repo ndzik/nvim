@@ -4,7 +4,7 @@ local capabilities = require("plugins.completion")
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
 
-    vim.api.nvim_command([[autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()]])
+    vim.api.nvim_command([[autocmd BufWritePre *.go lua vim.lsp.buf.format({timeout_ms = 2000})]])
 end
 
 require("lspconfig").gopls.setup({

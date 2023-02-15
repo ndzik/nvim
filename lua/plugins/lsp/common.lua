@@ -13,6 +13,7 @@ function common.DefaultKeymap()
     local opts = { noremap = true, silent = true }
 
     utils.mapbuf('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    utils.mapbuf('n', '<leader>k', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     utils.mapbuf('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     utils.mapbuf('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     utils.mapbuf('n', '<leader>cr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -23,6 +24,17 @@ function common.DefaultKeymap()
     utils.mapbuf('n', '<leader>di', '<cmd>lua vim.diagnostic.setloclist()<CR>', { silent = true })
     utils.mapbuf('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true })
     utils.mapbuf('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true })
+end
+
+function common.lsp_attach()
+    vim.diagnostic.config({
+        underline = false,
+        virtual_text = {
+            format = function(diag)
+                return string.format("%s...", string.sub(diag.message, 0, 10))
+            end
+        }
+    })
 end
 
 return common

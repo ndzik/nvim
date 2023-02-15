@@ -3,6 +3,7 @@ local capabilities = require("plugins.completion")
 
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
+    common.lsp_attach()
 
     vim.api.nvim_exec([[
     augroup FormatAutogroup

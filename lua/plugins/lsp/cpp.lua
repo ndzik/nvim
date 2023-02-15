@@ -3,6 +3,7 @@ local capabilities = require("plugins.completion")
 
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
+    common.lsp_attach()
 
     vim.api.nvim_command([[autocmd BufWritePre *.{cpp,h,hpp} lua vim.lsp.buf.format({timeout_ms = 2000})]])
 end

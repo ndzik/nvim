@@ -3,6 +3,7 @@ local capabilities = require("plugins.completion")
 
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
+    common.lsp_attach()
 end
 
 require('lspconfig').sumneko_lua.setup({

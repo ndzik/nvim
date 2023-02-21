@@ -34,3 +34,7 @@ vim.api.nvim_set_var("tmux_navigator_save_on_switch", 1)
 utils.map('n', '<C-c>', '<C-W>c')
 utils.map('n', '-', '<C-W>s<C-W><Down>')
 utils.map('n', '<Bar>', '<C-W>v<C-W><Right>')
+
+-- Copilot integration.
+utils.map('i', '<Left>', '<Plug>(copilot-next)')
+utils.map('i', '<Right>', '<Plug>(copilot-previous)')

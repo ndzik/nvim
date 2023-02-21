@@ -79,6 +79,9 @@ use([['nvim-telescope/telescope-file-browser.nvim']])
 use([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
 use([['nvim-treesitter/playground']])
 
+-- Plugins for code 10x'ing.
+use([['github/copilot.vim']])
+
 -- Plugins for formatting.
 use([['tpope/vim-sleuth']])
 use([['dhruvasagar/vim-table-mode']])

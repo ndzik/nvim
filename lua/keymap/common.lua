@@ -38,3 +38,4 @@ utils.map('n', '<Bar>', '<C-W>v<C-W><Right>')
 -- Copilot integration.
 utils.map('i', '<Left>', '<Plug>(copilot-next)')
 utils.map('i', '<Right>', '<Plug>(copilot-previous)')
+utils.map('i', '<Down>', '<Plug>(copilot-dismiss)')

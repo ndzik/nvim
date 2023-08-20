@@ -6,7 +6,7 @@ local custom_lsp_attach = function(client)
     common.lsp_attach()
 end
 
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').lua_ls.setup({
     cmd = {"lua-language-server"};
     settings = {
         Lua = {

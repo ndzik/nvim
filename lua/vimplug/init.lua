@@ -40,7 +40,6 @@ use([['hrsh7th/nvim-cmp']])
 
 -- Plugins for Haskell.
 use([['junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}]])
-use([['monkoose/fzf-hoogle.vim']])
 use([['neovimhaskell/haskell-vim']])
 
 -- PLugins for Purescript.

@@ -10,7 +10,7 @@ utils.map('n', '<leader>er', '<cmd>Telescope lsp_workspace_diagnostics<cr>')
 utils.map('n', '<leader>im', '<cmd>Telescope lsp_implementations<cr>')
 
 -- Filebrowser
-utils.map('n', '<leader>fb', '<cmd>Telescope file_browser<cr>')
+utils.map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 
 -- TODO: Add a check or PR to Telescope to check, that `ripgrep` and `fd` are
 -- properly installed on the system, otherwise this command will always fail

@@ -8,18 +8,26 @@ local custom_lsp_attach = function(client)
     vim.api.nvim_command([[autocmd BufWritePre *.rs lua vim.lsp.buf.format({timeout_ms = 2000})]])
 end
 
-require('lspconfig').pyright.setup({
+require('lspconfig').pylsp.setup({
     -- Make it compatible with virutalenv:
     settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = "off",
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
+        pylsp = {
+            pyls_black = {
+                enabled = true,
+                exclude = { "**/venv/**" },
             },
-            exclude = { "venv" },
-            venvPath = ".",
-            venv = ".venv",
+            pyls_isort = {
+                enabled = true,
+                exclude = { "**/venv/**" },
+            },
+            pyls_mypy = {
+                enabled = true,
+                exclude = { "**/venv/**" },
+            },
+            pyls_flake8 = {
+                enabled = true,
+                exclude = { "**/venv/**" },
+            },
         },
     },
     on_attach = custom_lsp_attach,

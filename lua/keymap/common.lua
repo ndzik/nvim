@@ -2,6 +2,7 @@ local utils = require("utils")
 
 utils.map('n', '<Space>', '<Nop>')
 utils.map('t', '<Esc>', '<C-\\><C-n>')
+utils.map('n', '<Backspace>', '<C-^>')
 
 -- Easily move through quickfix and locallist.
 utils.map('n', '<C-j>', '<cmd>lnext<cr>')

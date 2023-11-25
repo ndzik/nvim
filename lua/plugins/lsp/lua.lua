@@ -1,6 +1,8 @@
 local common = require("plugins.lsp.common")
 local capabilities = require("plugins.completion")
 
+require("neodev").setup()
+
 local custom_lsp_attach = function(client)
     common.DefaultKeymap()
     common.lsp_attach()

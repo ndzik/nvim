@@ -28,6 +28,7 @@ use([['puremourning/vimspector']])
 
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
+use([['folke/neodev.nvim']])
 
 -- Plugins for completion
 use([['hrsh7th/cmp-nvim-lsp']])
@@ -80,6 +81,9 @@ use([['nvim-treesitter/playground']])
 
 -- Plugins for code 10x'ing.
 use([['github/copilot.vim']])
+
+-- Plugins for movement
+use([['ggandor/leap.nvim']])
 
 -- Plugins for formatting.
 use([['tpope/vim-sleuth']])

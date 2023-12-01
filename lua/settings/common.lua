@@ -34,3 +34,6 @@ utils.opt('w', "foldmethod", "syntax")
 utils.opt('w', "foldnestmax", 10)
 utils.opt('w', "foldenable", false)
 utils.opt('w', "foldlevel", 2)
+
+-- Options for copilot, code-suggestions things.
+utils.letg('copilot_enabled', false)

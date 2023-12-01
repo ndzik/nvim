@@ -3,14 +3,7 @@ local utils = { }
 local scopes = { o = vim.o, b = vim.bo, w = vim.wo, g = vim.g}
 
 function utils.opt(scope, key, value)
-    if scope == 'g' then
-        scopes.g.key = value
-        return
-    end
-	scopes[scope][key] = value
-	if scope ~= 'o' then
-		scopes['o'][key] = value
-	end
+    scopes[scope][key] = value
 end
 
 -- utils.map allows the setting of neovim wide keymaps and not only limited to

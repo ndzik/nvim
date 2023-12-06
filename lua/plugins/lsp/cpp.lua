@@ -5,11 +5,10 @@ local custom_lsp_attach = function(client)
     common.DefaultKeymap()
     common.lsp_attach()
 
-    vim.api.nvim_command([[autocmd BufWritePre *.{cpp,h,hpp} lua vim.lsp.buf.format({timeout_ms = 2000})]])
+    vim.api.nvim_command([[autocmd BufWritePre *.{c,cpp,h,hpp} lua vim.lsp.buf.format({timeout_ms = 2000})]])
 end
 
-require("lspconfig").ccls.setup({
+require("lspconfig").clangd.setup({
     on_attach = custom_lsp_attach,
-    filetypes = {"c", "cpp", "objc", "objcpp", "cuda"},
     capabilities = capabilities,
 })

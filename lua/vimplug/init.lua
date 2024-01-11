@@ -22,6 +22,7 @@ use([['nikolvs/vim-sunbather']])
 use([['lokaltog/vim-monotone']])
 use([['andreasvc/vim-256noir']])
 use([['jaredgorski/fogbell.vim']])
+use([['tikhomirov/vim-glsl']])
 
 -- Plugins related to DSP support.
 use([['puremourning/vimspector']])

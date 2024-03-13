@@ -9,7 +9,7 @@ utils.opt('o', "background", "dark")
 utils.opt('w', "cursorline", true)
 utils.opt('w', "colorcolumn", "80")
 
-cmd "colorscheme pure"
+cmd "colorscheme mustard"
 
 cmd "syntax enable"
 cmd "hi CursorLine cterm=NONE ctermbg=236"

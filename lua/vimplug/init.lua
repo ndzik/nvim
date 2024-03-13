@@ -23,6 +23,8 @@ use([['lokaltog/vim-monotone']])
 use([['andreasvc/vim-256noir']])
 use([['jaredgorski/fogbell.vim']])
 use([['tikhomirov/vim-glsl']])
+use([['rktjmp/lush.nvim']])
+use([['ndzik/mustard']])
 
 -- Plugins related to DSP support.
 use([['puremourning/vimspector']])

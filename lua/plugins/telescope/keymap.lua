@@ -29,6 +29,3 @@ end
 utils.map('n', '<leader>gb', '<cmd>lua require("plugins.telescope.common").git_branches()<cr>')
 utils.map('n', '<leader>ev', '<cmd>lua require("plugins.telescope.common").search_dotfiles("$HOME/.config/nvim")<cr>')
 utils.map('n', '<leader>ff', '<cmd>lua require("plugins.telescope.common").find_files()<cr>')
-
--- Git worktree stuff.
-utils.map('n', '<leader>gw', '<cmd>lua require("telescope").extensions.git_worktree.git_worktrees()<cr>')

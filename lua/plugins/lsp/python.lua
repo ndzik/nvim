@@ -9,28 +9,9 @@ local custom_lsp_attach = function(client)
     vim.api.nvim_command([[autocmd BufWritePre *.py lua vim.lsp.buf.format({timeout_ms = 2000})]])
 end
 
-require('lspconfig').pylsp.setup({
-    settings = {
-        pylsp = {
-            plugins = {
-                black = {
-                    enabled = true,
-                },
-                isort = {
-                    enabled = true,
-                },
-                pylsp_mypy = {
-                    enabled = true,
-                    ignore_missing_imports = true,
-                    live_mode = false,
-                },
-                flake8 = {
-                    enabled = false,
-                },
-                pycodestyle = {
-                    enabled = false,
-                },
-            },
+require('lspconfig').ruff_lsp.setup({
+    init_options = {
+        settings = {
         },
     },
     on_attach = custom_lsp_attach,

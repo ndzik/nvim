@@ -20,7 +20,7 @@ require('lspconfig').pylsp.setup({
                 },
                 -- import sorting
                 isort = {
-                    enabled = true,
+                    enabled = false,
                 },
                 pylsp_mypy = {
                     enabled = true,
@@ -38,7 +38,7 @@ require('lspconfig').pylsp.setup({
     }
 })
 
-require('lspconfig').ruff_lsp.setup({
+require('lspconfig').ruff.setup({
     init_options = {
         settings = {
         },

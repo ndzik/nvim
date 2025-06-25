@@ -32,6 +32,7 @@ use([['puremourning/vimspector']])
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
 use([['folke/neodev.nvim']])
+use([['stevearc/conform.nvim']])
 
 -- Plugins for completion
 use([['hrsh7th/cmp-nvim-lsp']])

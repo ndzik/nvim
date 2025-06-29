@@ -56,6 +56,9 @@ use([['pangloss/vim-javascript']])
 use([['leafgarland/typescript-vim']])
 use([['peitalin/vim-jsx-typescript']])
 
+-- Plugins for Svelte.
+use([['evanleck/vim-svelte']])
+
 -- Plugins for Rust.
 use([['rust-lang/rust.vim']])
 

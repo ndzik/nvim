@@ -1,6 +1,8 @@
 -- lua/plugins/conform.lua
 local M = {
-  formatters_by_ft = {},
+  formatters_by_ft = {
+    svelte = { "prettier" },
+  },
 }
 
 function M.register(ft, formatter_list)

@@ -30,7 +30,11 @@ loader.default = function()
   call("plug#end")
   require("plugins")
   require("settings")
+  require("speak")
   require("keymap")
 end
 
 loader.setup()
+
+vim.cmd[[au BufRead,BufNewFile *.sw setfiletype swarm]]
+vim.cmd[[au BufRead,BufNewFile *.typ setfiletype typst]]

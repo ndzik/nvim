@@ -2,6 +2,11 @@
 local M = {
   formatters_by_ft = {
     svelte = { "prettier" },
+    typescript = { "prettier" },
+    javascript = { "prettier" },
+    html = { "prettier" },
+    jsx = { "prettier" },
+    tsx = { "prettier" },
   },
 }
 

@@ -89,3 +89,8 @@ use([['ggandor/leap.nvim']])
 -- Plugins for formatting.
 use([['tpope/vim-sleuth']])
 use([['dhruvasagar/vim-table-mode']])
+
+-- Plugins for julia
+use([['Vigemus/iron.nvim']])
+
+use([['chomosuke/typst-preview.nvim', {'tag': 'v1.*'}]])

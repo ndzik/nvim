@@ -40,3 +40,5 @@ utils.map('n', '<Bar>', '<C-W>v<C-W><Right>')
 utils.map('i', '<Left>', '<Plug>(copilot-next)')
 utils.map('i', '<Right>', '<Plug>(copilot-previous)')
 utils.map('i', '<Down>', '<Plug>(copilot-dismiss)')
+
+utils.map('x', '<leader>r', '<cmd>lua require("speak").speak_visual()<cr>', { silent = true })

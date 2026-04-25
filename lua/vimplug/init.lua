@@ -77,8 +77,7 @@ use([['nvim-telescope/telescope-fzy-native.nvim']])
 use([['nvim-telescope/telescope-file-browser.nvim']])
 
 -- Plugins for Treesitter.
-use([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
-use([['nvim-treesitter/playground']])
+use([['nvim-treesitter/nvim-treesitter', { 'branch': 'main', 'do': ':TSUpdate' }]])
 
 -- Plugins for code 10x'ing.
 use([['github/copilot.vim']])
@@ -94,3 +93,6 @@ use([['dhruvasagar/vim-table-mode']])
 use([['Vigemus/iron.nvim']])
 
 use([['chomosuke/typst-preview.nvim', {'tag': 'v1.*'}]])
+
+-- Plugins for lean
+use([['Julian/lean.nvim']])

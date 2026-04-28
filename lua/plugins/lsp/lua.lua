@@ -1,14 +1,6 @@
-local common = require("plugins.lsp.common")
-local capabilities = require("plugins.completion")
-
 require("neodev").setup()
 
-local custom_lsp_attach = function(client)
-    common.DefaultKeymap()
-    common.lsp_attach()
-end
-
-require('lspconfig').lua_ls.setup({
+vim.lsp.config("lua_ls", {
     cmd = {"lua-language-server"};
     settings = {
         Lua = {
@@ -27,6 +19,4 @@ require('lspconfig').lua_ls.setup({
             },
         }
     },
-    on_attach = custom_lsp_attach,
-    capabilities = capabilities,
 })

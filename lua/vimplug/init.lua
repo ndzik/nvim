@@ -27,7 +27,7 @@ use([['rktjmp/lush.nvim']])
 use([['ndzik/mustard']])
 
 -- Plugins related to DSP support.
-use([['puremourning/vimspector']])
+-- use([['puremourning/vimspector']])
 
 -- Plugins related to LSP support.
 use([['neovim/nvim-lspconfig']])
@@ -81,9 +81,6 @@ use([['nvim-treesitter/nvim-treesitter', { 'branch': 'main', 'do': ':TSUpdate' }
 
 -- Plugins for code 10x'ing.
 use([['github/copilot.vim']])
-
--- Plugins for movement
-use([['ggandor/leap.nvim']])
 
 -- Plugins for formatting.
 use([['tpope/vim-sleuth']])

@@ -1,12 +1,5 @@
-local common = require("plugins.lsp.common")
-local capabilities = require("plugins.completion")
-
-local custom_lsp_attach = function(client)
-    common.DefaultKeymap()
-    common.lsp_attach()
-end
-
-require("lspconfig").purescriptls.setup({
-    on_attach = custom_lsp_attach,
-    capabilities = capabilities,
+vim.lsp.config("purescriptls", {
+    cmd = { "purescript-language-server", "--stdio" },
+    filetypes = { "purescript" },
+    root_dir = require("lspconfig.util").root_pattern("spago.dhall", "psc-package.json", "bower.json", "package.json", ".git"),
 })

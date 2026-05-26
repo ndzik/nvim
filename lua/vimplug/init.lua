@@ -68,6 +68,8 @@ use([['sebdah/vim-delve']])
 -- Plugins for Git-related stuff.
 use([['tpope/vim-fugitive']])
 use([['kyazdani42/nvim-web-devicons']])
+use([['lewis6991/gitsigns.nvim']])
+use([['sindrets/diffview.nvim']])
 
 -- Plugins for Telescope.
 use([['nvim-lua/popup.nvim']])

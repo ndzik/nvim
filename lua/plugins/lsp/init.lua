@@ -43,11 +43,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     common.DefaultKeymap(ev.buf, client)
     common.lsp_attach()
-
-    local opts = { buffer = ev.buf, silent = true }
-
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   end,
 })

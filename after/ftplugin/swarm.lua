@@ -1,6 +1,2 @@
-if vim.fn.executable('swarm') == 1 then
-    vim.lsp.start({
-        name = 'Swarm Language Server',
-        cmd = { 'swarm', 'lsp' },
-    })
-end
+-- Swarm LSP is configured and enabled in lua/plugins/lsp/swarm.lua.
+-- Keep this file for Swarm filetype-local editor settings only.

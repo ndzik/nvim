@@ -22,11 +22,11 @@ end
 function M.open_window()
   M.buf = api.nvim_create_buf(false, true) -- create new empty buffer
 
-  api.nvim_buf_set_option(M.buf, 'bufhidden', 'wipe')
+  vim.bo[M.buf].bufhidden = 'wipe'
 
   -- get dimensions
-  local width = api.nvim_get_option("columns")
-  local height = api.nvim_get_option("lines")
+  local width = vim.o.columns
+  local height = vim.o.lines
 
   -- calculate our floating window size
   local win_height = math.ceil(height * 0.8 - 4)
@@ -61,19 +61,19 @@ function M.open_window()
   -- We bind the actions to the current buffer, because there is no reason to
   -- keep using VIM with this config if the user is not interested in using it
   -- anyway.
-  api.nvim_buf_set_keymap(0,
+  api.nvim_buf_set_keymap(M.buf,
   'n',
   'y',
   ':lua require("loader").install()<cr>',
   { nowait = true, noremap = true, silent = true }
   )
-  api.nvim_buf_set_keymap(0,
+  api.nvim_buf_set_keymap(M.buf,
   'n',
   'n',
   ':lua require("loader").close_window()<cr>',
   { nowait = true, noremap = true, silent = true }
   )
-  api.nvim_buf_set_keymap(0,
+  api.nvim_buf_set_keymap(M.buf,
   'n',
   'q',
   ':lua require("loader").close_window()<cr>',

@@ -1,5 +1,7 @@
 vim.lsp.config("gopls", {
     cmd = { "gopls", "serve" },
     filetypes = { "go", "gomod" },
-    root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", ".git"),
+    root_markers = { "go.work", "go.mod", ".git" },
 })
+
+vim.lsp.enable({ "gopls" })

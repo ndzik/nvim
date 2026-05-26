@@ -3,5 +3,7 @@ vim.lsp.config("julials", {
       "-e", [[using LanguageServer, SymbolServer;
               runserver()]] },
     filetypes = { "julia" },
-    root_dir = require("lspconfig.util").root_pattern("Project.toml", ".git"),
+    root_markers = { "Project.toml", ".git" },
 })
+
+vim.lsp.enable({ "julials" })

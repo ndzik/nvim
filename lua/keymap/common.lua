@@ -1,5 +1,25 @@
 local utils = require("utils")
 
+local function reload_config()
+  for name, _ in pairs(package.loaded) do
+    if name:match("^plugins")
+      or name:match("^settings")
+      or name:match("^keymap")
+      or name:match("^utils")
+      or name == "loader"
+      or name == "speak"
+      or name == "vimplug"
+    then
+      package.loaded[name] = nil
+    end
+  end
+
+  dofile(vim.env.MYVIMRC)
+  print("Reloaded nvim config")
+end
+
+vim.api.nvim_create_user_command("ConfigReload", reload_config, { desc = "Reload nvim config", force = true })
+
 utils.map('n', '<Space>', '<Nop>')
 utils.map('t', '<Esc>', '<C-\\><C-n>')
 utils.map('n', '<Backspace>', '<C-^>')
@@ -42,3 +62,5 @@ utils.map('i', '<Right>', '<Plug>(copilot-previous)')
 utils.map('i', '<Down>', '<Plug>(copilot-dismiss)')
 
 utils.map('x', '<leader>r', '<cmd>lua require("speak").speak_visual()<cr>', { silent = true })
+utils.map('n', '<leader>vv', '<cmd>ConfigReload<CR>')
+

@@ -44,7 +44,7 @@ vim.api.nvim_create_user_command('HomeLayoutEnable', function()
   vim.g.home_layout_active = 1
   set_mappings()
   print("Home layout enabled.")
-end, {})
+end, { force = true })
 
 -- Command to disable your custom layout mappings
 vim.api.nvim_create_user_command('HomeLayoutDisable', function()
@@ -55,7 +55,7 @@ vim.api.nvim_create_user_command('HomeLayoutDisable', function()
   vim.g.home_layout_active = 0
   clear_mappings()
   print("Home layout disabled.")
-end, {})
+end, { force = true })
 
 -- You could optionally create a toggle command for convenience
 vim.api.nvim_create_user_command('HomeLayoutToggle', function()
@@ -64,7 +64,7 @@ vim.api.nvim_create_user_command('HomeLayoutToggle', function()
     else
         vim.cmd('HomeLayoutEnable')
     end
-end, {})
+end, { force = true })
 
 
 

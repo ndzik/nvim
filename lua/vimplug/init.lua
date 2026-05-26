@@ -95,3 +95,5 @@ use([['chomosuke/typst-preview.nvim', {'tag': 'v1.*'}]])
 
 -- Plugins for lean
 use([['Julian/lean.nvim']])
+
+-- Plugins related to AI integrations

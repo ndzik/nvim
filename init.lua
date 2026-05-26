@@ -12,17 +12,28 @@ loader.isNotInstalled = function()
 end
 
 loader.doInstall = function()
-  os.execute([[
-  curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" \
-  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  ]])
+  local install_path = fn.stdpath("data") .. "/site/autoload/plug.vim"
+  local result = vim.fn.system({
+    "curl",
+    "-fLo",
+    install_path,
+    "--create-dirs",
+    "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+  })
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Failed to install vim-plug via curl: " .. tostring(result), vim.log.levels.ERROR)
+    return
+  end
+
+  vim.cmd("source " .. vim.fn.fnameescape(install_path))
+
   call("plug#begin")
   require("vimplug")
   call("plug#end")
-  vim.api.nvim_command("PlugInstall")
-  require("plugins")
-  require("settings")
-  require("keymap")
+
+  vim.cmd("PlugInstall --sync")
+  vim.cmd("source " .. vim.fn.fnameescape(vim.env.MYVIMRC))
 end
 
 loader.default = function()
@@ -37,5 +48,16 @@ end
 
 loader.setup()
 
-vim.cmd[[au BufRead,BufNewFile *.sw setfiletype swarm]]
-vim.cmd[[au BufRead,BufNewFile *.typ setfiletype typst]]
+local filetype_augroup = vim.api.nvim_create_augroup("UserFiletypes", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetype_augroup,
+  pattern = "*.sw",
+  command = "setfiletype swarm",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetype_augroup,
+  pattern = "*.typ",
+  command = "setfiletype typst",
+})

@@ -6,7 +6,11 @@ local M = {
 }
 
 function M.close_window()
-  api.nvim_buf_delete(M.buf, { force = true })
+  if M.buf and api.nvim_buf_is_valid(M.buf) then
+    api.nvim_buf_delete(M.buf, { force = true })
+  end
+  M.buf = nil
+  M.win = nil
 end
 
 function M.install()
@@ -69,6 +73,12 @@ function M.open_window()
   )
   api.nvim_buf_set_keymap(M.buf,
   'n',
+  '<CR>',
+  ':lua require("loader").install()<cr>',
+  { nowait = true, noremap = true, silent = true }
+  )
+  api.nvim_buf_set_keymap(M.buf,
+  'n',
   'n',
   ':lua require("loader").close_window()<cr>',
   { nowait = true, noremap = true, silent = true }
@@ -84,6 +94,17 @@ function M.open_window()
   M.win = api.nvim_open_win(M.buf, true, opts)
   api.nvim_set_current_win(M.win)
   api.nvim_set_current_buf(M.buf)
+
+  -- On startup, focus can be stolen by other initialization events.
+  -- Re-assert focus on the next scheduler tick.
+  vim.schedule(function()
+    if M.win and api.nvim_win_is_valid(M.win) then
+      api.nvim_set_current_win(M.win)
+    end
+    if M.buf and api.nvim_buf_is_valid(M.buf) then
+      api.nvim_set_current_buf(M.buf)
+    end
+  end)
 end
 
 function M.setup()

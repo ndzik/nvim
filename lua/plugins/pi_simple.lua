@@ -60,6 +60,44 @@ local function normalize_lines(items)
   return out
 end
 
+local function get_pi_defaults_from_settings()
+  local config_dir = vim.env.PI_CODING_AGENT_DIR or "~/.pi/agent"
+  local settings_path = vim.fn.expand(config_dir .. "/settings.json")
+
+  local ok_read, settings_raw = pcall(vim.fn.readfile, settings_path)
+  if not ok_read or not settings_raw or #settings_raw == 0 then
+    return nil, nil
+  end
+
+  local ok_decode, settings = pcall(vim.json.decode, table.concat(settings_raw, "\n"))
+  if not ok_decode or type(settings) ~= "table" then
+    return nil, nil
+  end
+
+  local provider = settings.defaultProvider
+  local model = settings.defaultModel
+  if type(provider) ~= "string" then provider = nil end
+  if type(model) ~= "string" then model = nil end
+
+  return provider, model
+end
+
+local function get_pi_title()
+  local provider, model = get_pi_defaults_from_settings()
+  if model and model ~= "" then
+    if provider and provider ~= "" and not model:find("/", 1, true) then
+      return string.format(" Pi (%s/%s) ", provider, model)
+    end
+    return string.format(" Pi (%s) ", model)
+  end
+
+  if provider and provider ~= "" then
+    return string.format(" Pi (%s) ", provider)
+  end
+
+  return " Pi "
+end
+
 local function open_window(title, lines)
   M.close_window()
 
@@ -110,7 +148,7 @@ function M.ask_selection()
       return
     end
 
-    open_window(" Pi ", { "Thinking..." })
+    open_window(get_pi_title(), { "Thinking..." })
 
     local prompt = table.concat({
       "You are given selected code as context.",
@@ -123,7 +161,9 @@ function M.ask_selection()
       selection,
     }, "\n")
 
-    vim.system({ "pi", prompt }, { text = true }, vim.schedule_wrap(function(result)
+    local cmd = { "pi", prompt }
+
+    vim.system(cmd, { text = true }, vim.schedule_wrap(function(result)
       local output = result.stdout or ""
       local err = result.stderr or ""
 
@@ -142,7 +182,7 @@ function M.ask_selection()
       end
 
       local lines = { "# Pi Response", "", output, "", "---", "Press q to close" }
-      open_window(" Pi ", lines)
+      open_window(get_pi_title(), lines)
     end))
   end)
 end

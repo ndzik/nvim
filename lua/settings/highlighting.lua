@@ -10,9 +10,14 @@ utils.opt('w', "cursorline", true)
 utils.opt('w', "colorcolumn", "80")
 
 cmd "colorscheme retrobox"
+cmd "hi Normal guibg=NONE ctermbg=NONE"
+cmd "hi NormalNC guibg=NONE ctermbg=NONE"
+cmd "hi SignColumn guibg=NONE ctermbg=NONE"
+cmd "hi EndOfBuffer guibg=NONE ctermbg=NONE"
+cmd "hi FoldColumn guibg=NONE ctermbg=NONE"
 
 cmd "syntax enable"
-cmd "hi CursorLine cterm=NONE ctermbg=236"
+cmd "hi CursorLine guibg=#120c04 ctermbg=NONE"
 cmd "hi Folded ctermfg=2 ctermbg=233"
 
 cmd "hi Pmenu ctermbg=233 ctermfg=228"

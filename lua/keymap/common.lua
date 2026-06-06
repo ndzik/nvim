@@ -62,6 +62,6 @@ utils.map('i', '<Right>', '<Plug>(copilot-previous)')
 utils.map('i', '<Down>', '<Plug>(copilot-dismiss)')
 
 utils.map('x', '<leader>r', '<cmd>lua require("speak").speak_visual()<cr>', { silent = true })
-utils.map('x', '<leader>ai', '<cmd>PiSimpleAskSelection<CR>')
+utils.map('x', '<leader>ai', ':<C-u>PiSimpleAskSelection<CR>')
 utils.map('n', '<leader>ac', '<cmd>PiSimpleClose<CR>')
 utils.map('n', '<leader>vv', '<cmd>ConfigReload<CR>')

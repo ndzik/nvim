@@ -3,6 +3,7 @@ local M = {
   sinks = {},
   prompt_bufnr = nil,
   prompt_winnr = nil,
+  prompt_draft_lines = nil,
 }
 
 local PROTOCOL_VERSION = 1
@@ -399,6 +400,29 @@ local function prompt_title(opts)
   return " " .. table.concat(parts, " + ") .. " "
 end
 
+local function prompt_lines_have_text(lines)
+  for _, line in ipairs(lines or {}) do
+    if line:match("%S") then
+      return true
+    end
+  end
+  return false
+end
+
+local function save_prompt_draft(bufnr, should_notify)
+  if not is_buffer_valid(bufnr) then return end
+
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  if prompt_lines_have_text(lines) then
+    M.prompt_draft_lines = lines
+    if should_notify then
+      notify("Pi prompt draft saved")
+    end
+  else
+    M.prompt_draft_lines = nil
+  end
+end
+
 local function normalized_prompt_text(bufnr)
   local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
   while #lines > 0 and lines[1]:match("^%s*$") do
@@ -434,30 +458,51 @@ local function open_prompt(opts, on_submit)
     border = "rounded",
     title = prompt_title(opts),
     title_pos = "center",
-    footer = "Esc then Enter/C-s: send • q/Esc: cancel",
+    footer = "Enter/C-s: send • q/Esc/C-c: save draft + close",
     footer_pos = "center",
   })
 
   vim.wo[M.prompt_winnr].wrap = true
   vim.wo[M.prompt_winnr].linebreak = true
-  vim.api.nvim_buf_set_lines(M.prompt_bufnr, 0, -1, false, { "" })
+
+  local initial_lines = M.prompt_draft_lines and vim.deepcopy(M.prompt_draft_lines) or { "" }
+  if #initial_lines == 0 then
+    initial_lines = { "" }
+  end
+  vim.api.nvim_buf_set_lines(M.prompt_bufnr, 0, -1, false, initial_lines)
+  vim.api.nvim_win_set_cursor(M.prompt_winnr, { #initial_lines, #initial_lines[#initial_lines] })
+
+  local prompt_bufnr = M.prompt_bufnr
+  local submitted = false
+  vim.api.nvim_create_autocmd({ "BufWipeout", "BufHidden" }, {
+    buffer = prompt_bufnr,
+    once = true,
+    callback = function()
+      if not submitted then
+        save_prompt_draft(prompt_bufnr, false)
+      end
+    end,
+  })
 
   local function submit()
-    if not is_buffer_valid(M.prompt_bufnr) then return end
-    local text = normalized_prompt_text(M.prompt_bufnr)
+    if not is_buffer_valid(prompt_bufnr) then return end
+    local text = normalized_prompt_text(prompt_bufnr)
     if not text:match("%S") then
       notify("Pi prompt is empty", vim.log.levels.WARN)
       return
     end
+    submitted = true
+    M.prompt_draft_lines = nil
     M.close_prompt()
     on_submit(text)
   end
 
   local function cancel()
+    save_prompt_draft(prompt_bufnr, true)
     M.close_prompt()
   end
 
-  local keymap_opts = { buffer = M.prompt_bufnr, silent = true, nowait = true }
+  local keymap_opts = { buffer = prompt_bufnr, silent = true, nowait = true }
   vim.keymap.set("n", "<CR>", submit, keymap_opts)
   vim.keymap.set("n", "q", cancel, keymap_opts)
   vim.keymap.set("n", "<Esc>", cancel, keymap_opts)

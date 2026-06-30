@@ -12,6 +12,7 @@ require("plugins.lsp.purescript")
 require("plugins.lsp.swarm")
 require("plugins.lsp.julia")
 require("plugins.lsp.typst")
+require("plugins.lsp.agda")
 
 local common = require("plugins.lsp.common")
 local capabilities = require("plugins.completion")

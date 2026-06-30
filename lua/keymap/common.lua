@@ -24,9 +24,9 @@ utils.map('n', '<Space>', '<Nop>')
 utils.map('t', '<Esc>', '<C-\\><C-n>')
 utils.map('n', '<Backspace>', '<C-^>')
 
--- Easily move through quickfix and locallist.
-utils.map('n', '<C-j>', '<cmd>lnext<cr>')
-utils.map('n', '<C-k>', '<cmd>lprev<cr>')
+-- Easily move through Intent items and quickfix.
+utils.map('n', '<C-j>', '<cmd>IntentNext<cr>')
+utils.map('n', '<C-k>', '<cmd>IntentPrev<cr>')
 utils.map('n', '<C-l>', '<cmd>cnext<cr>')
 utils.map('n', '<C-h>', '<cmd>cprev<cr>')
 
